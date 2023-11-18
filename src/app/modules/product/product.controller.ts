@@ -20,6 +20,16 @@ const getProduct = catchAsync(async (req: Request, res: Response) => {
   sendResponse<IProduct[]>(res, {
     statusCode: httpStatus.OK,
     success: true,
+    message: "Products retrived successfully",
+    data: result,
+  });
+});
+const getProductById = catchAsync(async (req: Request, res: Response) => {
+  const { id } = req.params;
+  const result = await ProductService.getProductById(id);
+  sendResponse<IProduct>(res, {
+    statusCode: httpStatus.OK,
+    success: true,
     message: "Product retrived successfully",
     data: result,
   });
@@ -28,4 +38,5 @@ const getProduct = catchAsync(async (req: Request, res: Response) => {
 export const ProductController = {
   createProduct,
   getProduct,
+  getProductById,
 };

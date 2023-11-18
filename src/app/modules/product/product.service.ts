@@ -9,8 +9,13 @@ const getProduct = async (): Promise<IProduct[] | null> => {
   const result = await Product.find({});
   return result;
 };
+const getProductById = async (id: string): Promise<IProduct | null> => {
+  const result = await Product.findById(id);
+  return result;
+};
 
 export const ProductService = {
   createProduct,
   getProduct,
+  getProductById,
 };

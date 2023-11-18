@@ -11,6 +11,17 @@ const Registration = catchAsync(async (req: Request, res: Response) => {
   sendResponse<IUser>(res, {
     statusCode: httpStatus.OK,
     success: true,
+    message: "Users Registration successfully",
+    data: result,
+  });
+});
+
+const getUserByEmail = catchAsync(async (req: Request, res: Response) => {
+  const { email } = req.params;
+  const result = await UserService.getUserByEmail(email);
+  sendResponse<IUser>(res, {
+    statusCode: httpStatus.OK,
+    success: true,
     message: "User Registration successfully",
     data: result,
   });
@@ -18,4 +29,5 @@ const Registration = catchAsync(async (req: Request, res: Response) => {
 
 export const UserController = {
   Registration,
+  getUserByEmail,
 };
