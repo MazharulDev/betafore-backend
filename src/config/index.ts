@@ -11,4 +11,7 @@ export default {
     secret: process.env.JWT_SECRET,
     expires_in: process.env.JWT_EXPIRES_IN,
   },
+  stripe: {
+    stripe_secret_key: process.env.STRIPE_SECRET_KEY,
+  },
 };
